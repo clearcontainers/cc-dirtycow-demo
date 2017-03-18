@@ -1,0 +1,6 @@
+*.swp
+elf
+proc_exploit
+*.o
+payload
+payload.h
