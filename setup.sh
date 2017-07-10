@@ -153,13 +153,18 @@ success "Kernel with aufs support installed"
 cd /usr/share/clear-containers/
 
 info "Downloading the clear containers image"
-wget 'https://download.clearlinux.org/releases/10000/clear/clear-10000-containers.img.xz'
+# NOTE: On July 10th 2017 due to issue #1
+# Clear Linux team needed space on the server so the image was deleted
+# Original URL: 'https://download.clearlinux.org/releases/10000/clear/clear-10000-containers.img.xz'
+wget 'https://github.com/clearcontainers/cc-dirtycow-demo/releases/download/v1.0/clear-10000-containers.img.xz'
 unxz clear-10000-containers.img.xz
 rm -f clear-containers.img
 ln -s clear-10000-containers.img clear-containers.img
 success "Image download complete"
 
 info "Downloading the clear containers kernel"
+# NOTE: Due to issue #1 if this goes down a copy has been made available here:
+# 'https://github.com/clearcontainers/cc-dirtycow-demo/releases/download/v1.0/linux-container-4.5-49.x86_64.rpm'
 wget 'https://download.clearlinux.org/releases/10000/clear/x86_64/os/Packages/linux-container-4.5-49.x86_64.rpm'
 rpm2cpio linux-container-4.5-49.x86_64.rpm | cpio -idmv
 rm -f linux-container-4.5-49.x86_64.rpm
